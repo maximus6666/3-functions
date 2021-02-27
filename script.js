@@ -10,9 +10,9 @@ function convertCurrency(currStr) {
   let parsedCurrency = parseInt(currency);
 
   if (currency.includes('$')) {
-    return parsedCurrency * exchangeRate;
+    return parsedCurrency * exchangeRate + "UAH";
   } else if (currency.includes('uah')) {
-    return +(parsedCurrency / exchangeRate).toFixed(2);
+    return (parsedCurrency / exchangeRate).toFixed(2) + "$";
   } else {
     console.log('Конвертуються тільки "$" та "Uah"');
   }
