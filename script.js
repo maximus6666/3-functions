@@ -5,14 +5,14 @@ function formatName(nameStr) {
 
 //2 функція, яка конвертує долари в гривні та навпаки
 function convertCurrency(currStr) {
-  let exchangeRate = 28;
-  let currency = currStr.toLowerCase();
-  let parsedCurrency = parseInt(currency);
+  const exchangeRate = 28;
+  const currency = currStr.toLowerCase();
+  const parsedCurrency = parseFloat(currency);
 
-  if (currency.includes('$')) {
-    return parsedCurrency * exchangeRate + "UAH";
-  } else if (currency.includes('uah')) {
-    return (parsedCurrency / exchangeRate).toFixed(2) + "$";
+  if (currency.endsWith('$')) {
+    return (parsedCurrency * exchangeRate).toFixed(2) + " UAH";
+  } else if (currency.endsWith('uah')) {
+    return (parsedCurrency / exchangeRate).toFixed(2) + " $";
   } else {
     console.log('Конвертуються тільки "$" та "Uah"');
   }
@@ -26,25 +26,27 @@ function getRndInteger(min, max) {
 //4 функція генерації випадкового паролю 
 function getRandomPassword(passLength = 8) {
   let password = '';
+
   for (let i = 0; i < passLength; i++) {
     let numOfPass = Math.floor(Math.random() * 10);
     password += numOfPass;
   }
+
   return +password;
 }
 
 //5 функція, яка рахує скільки разів певна буква повторюється в слові.
 function countLetter(letterStr, wordStr) {
   let counter = 0;
-  let userWord = wordStr.toLowerCase();
-  let userLetter = letterStr.toLowerCase();
+  const userWord = wordStr.toLowerCase();
+  const userLetter = letterStr.toLowerCase();
 
   for (let i = 0; i < userWord.length; i++) {
-    let letterInWord = userWord[i];
-    if (userLetter === letterInWord) {
+    if (userLetter === userWord[i]) {
       counter++;
     }
   }
+
   return counter;
 }
 
@@ -56,13 +58,15 @@ function deleteLetters(delLetterStr, sentence) {
 
 //7 функця, яка отримує будь-яке число та виводить найбільшу цифру в цьому числі 
 function getMaxDigit(number) {
-  let userNumber = String(number);
+  const userNumber = String(number);
   let maxNumber = userNumber[0];
+
   for (let i = 0; i < userNumber.length; i++) {
     if (maxNumber < userNumber[i]) {
       maxNumber = userNumber[i];
     }
   }
+
   return +maxNumber;
 }
 
